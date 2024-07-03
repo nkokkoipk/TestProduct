@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebApplication1.DATA.Category>
+@{
+    ViewBag.Title = "DemoSQL";
+}
+
+<h2>DemoSQL</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>ID</th>
+            <th>NameCatelory</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ var i = 0;}
+        @foreach (var item in Model)
+        {
+            i++;
+            <tr>
+                <td>@i</td>
+                <td>@item.IdCategory</td>
+                <td>@item.NameCategory</td>
+                <td>
+                    @Html.ActionLink("Xem chi tiết", "Detail", new { id = @item.IdCategory }, htmlAttributes: new { @class = "btn btn-danger", id = "btn-detail" })
+                    @Html.ActionLink("Xóa", "Delete", new { id = @item.IdCategory }, htmlAttributes: new { @class = "btn btn-danger", id = "btn-delete" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+    @Html.ActionLink("Thêm", "AddView",null, htmlAttributes: new { @class = "btn btn-success", id = "btn-add" });

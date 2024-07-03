@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="row">
+    <div class="col-3">
+        <label>Chọn Sản Phẩm</label>
+        @Html.DropDownList("IdCategory", new SelectList(ViewBag.ListCate, "IdCategory", "NameCategory"), new { @class = "form-control" })
+       
+    </div>
+    </br>
+    </br>
+    <div>
+        <button class="btn btn-danger" id="search"> Xem Danh Sách Sản Phẩm</button>
+        <button class="btn btn-danger" id="search1"> Xem Danh Sách Sản Phẩm(json)</button>
+        <button class="btn btn-danger" id="search2"> Xem Danh Sách Sản Phẩm phân trang </button>
+    </div>
+</div>
+<div class="mess">
+
+</div>
+<script>
+    $(function () {
+        $("#search").click(function () {
+            $.ajax(
+                {
+                    url: "Admin/Product/search",
+                    type: "GET",
+                    data: { idCate: $("#IdCategory").val() },
+                    success: function (datare) {
+                        alert(datare);
+                    },
+                    error: function () {
+
+                    }
+                });
+        })
+        $("#search1").click(function () {
+            $.ajax(
+                {
+                    url: "Admin/Product/search1",
+                    type: "GET",
+                    data: { idCate: $("#IdCategory").val() },
+                    success: function (datare) {
+                        $(".mess").html(datare);
+                    },
+                    error: function () {
+
+                    }
+                });
+        })
+        $("#search2").click(function () {
+            $.ajax(
+                {
+                    url: "Admin/Product/search2",
+                    type: "GET",
+                    data: { idCate: $("#IdCategory").val() },
+                    success: function (datare) {
+                        $(".mess").html(datare);
+                    },
+                    error: function () {
+
+                    }
+                });
+        })
+    })
+ 
+</script>
+

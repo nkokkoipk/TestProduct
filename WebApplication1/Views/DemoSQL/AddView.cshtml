@@ -1,0 +1,30 @@
+﻿@model WebApplication1.DATA.Category
+@{
+    ViewBag.Title = "AddView";
+}
+
+<h2>AddView</h2>
+
+@using (Html.BeginForm("Add", null, FormMethod.Post))
+{
+    <div class="row">
+        <h4 style="color:red">@ViewBag.ErrorMess</h4>
+        @*<div class="col-4">
+            @Html.LabelFor(x => x.IdCategory)
+        </div>
+        <div class="col-8">
+            @Html.TextBoxFor(x => x.IdCategory, new { @class = "form-control" })
+        </div>*@
+        <div class="col-4">
+            @Html.LabelFor(x => x.NameCategory)
+        </div>
+        <div class="col-8">
+            @Html.TextBoxFor(x => x.NameCategory, new { @class = "form-control" })
+        </div>
+
+    </div>
+    <div class="row">
+        <input type="submit" value="Thêm" class="btn btn-success" />
+    </div>
+
+}

@@ -1,0 +1,34 @@
+﻿@model WebApplication1.ViewMoDel.ProductVM
+@{
+    ViewBag.Title = "index";
+}
+
+<form enctype="multipart/form-data">
+</form>
+@using (Html.BeginForm("Save", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.IdProduct)
+    <div class="form-group">
+        <label>@Html.LabelFor(x => x.NameProduct)</label>
+        @Html.TextBoxFor(x => x.NameProduct, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.NameProduct, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label>@Html.LabelFor(x => x.Price)</label>
+        @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>@Html.LabelFor(x => x.NameCategory)</label>
+        @Html.DropDownList("IdCategory", new SelectList(ViewBag.ListCate, "IdCategory", "NameCategory"), new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Hình ảnh</label>
+        <input type="file" name="FilePro" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Lưu" class="btn btn-success" />
+    </div>
+
+}

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication1.ViewMoDel.ProductVM>
+@{
+    ViewBag.Title = "index";
+}
+
+<h2>index</h2>
+
+<button>Thêm</button>
+@Html.ActionLink("Thêm SP","Add",null,new { @class="btn btn-primary"})
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>STT</td>
+            <td>Mã</td>
+            <td>Tên SP</td>
+            <td>Loại SP</td>
+            <td>Giá</td>
+        </tr>
+    </thead>
+    <tbody>
+        @{ var i = 0;}
+        @foreach(var item in Model)
+            {
+            i++;
+                <tr>
+                    <td>@i</td>
+                    <td>@item.IdProduct</td>
+                    <td>@item.NameProduct</td>
+                    <td>@item.NameCategory</td>
+                    <td>@string.Format("{0:#,00}", item.Price)</td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Add", new { idpro = item.IdProduct }, new { @class = "btn btn-succes" })
+                        @Html.ActionLink("Xóa", "Xoa", new { idpro = item.IdProduct }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+
